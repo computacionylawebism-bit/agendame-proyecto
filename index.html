@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>AGENDAME</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Fuente llamativa de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <img src="Logo agenda accesible.png" class="header-logo" alt="Logo 1">
+      <h1>AGENDAME</h1>
+      <img src="ism logo.png" class="header-logo" alt="Logo 2">
+    </div>
+    <p class="instructions">
+      Escribe la tarea, elegí la categoría, la fecha y la hora.
+    </p>
+    <p class="credits">
+      Proyecto creado por: Cáceres Diego, García Evelyn, Pintos Cecilia y Zapata Andrea –
+      Computación y la Web – 2° Profesorado de Informática
+    </p>
+  </header>
+
+  <section class="form-section">
+    <input type="password" id="parentPassword" placeholder="Clave de padres">
+    <button id="toggleModeBtn">MODO TUTOR</button>
+  </section>
+
+  <section class="form-section" id="taskForm">
+    <input type="text" id="taskInput" placeholder="Escribe una tarea simple...">
+    <select id="categorySelect">
+      <option value="medicamento">💊 Medicamentos</option>
+      <option value="escolar">🎒 Escolar</option>
+      <option value="recreacion">🎲 Recreación</option>
+    </select>
+    <input type="datetime-local" id="taskTimeInput">
+    <button id="addTaskBtn">➕ Agregar tarea</button>
+  </section>
+
+  <section class="form-section">
+    <label for="calendarView">Ver día:</label>
+    <input type="date" id="calendarView">
+  </section>
+
+  <div id="taskList" class="task-list"></div>
+
+  <section class="form-section">
+    <button id="increaseFont">🔍 Aumentar letra</button>
+    <button id="decreaseFont">🔎 Disminuir letra</button>
+    <button id="toggleContrast">🌗 Alto contraste</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

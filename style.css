@@ -1,0 +1,128 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #000;
+}
+
+header {
+  background-color: #a7c7e7;
+  padding: 15px;
+  text-align: center;
+  color: #000;
+}
+.header-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.header-logo {
+  height: 200px; /* logos más grandes */
+  width: auto;
+}
+
+h1 {
+  margin: 0;
+  font-size: 80px; /* más grande */
+  font-family: 'Fredoka One', cursive; /* fuente llamativa */
+  flex: 1;
+  text-align: center;
+}
+
+.instructions {
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.credits {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #222;
+}
+
+.form-section {
+  padding: 15px;
+  text-align: center;
+}
+
+input, select, button {
+  margin: 5px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.task-list {
+  padding: 20px;
+}
+
+/* Tareas */
+.task {
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 10px;
+  width: 250px;
+  text-align: center;
+  background-color: #ffd6d6;
+}
+
+.task p {
+  margin: 5px 0;
+}
+
+.task small {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.task button {
+  margin-top: 5px;
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 8px;
+}
+
+/* Alto contraste */
+.high-contrast,
+.high-contrast body {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+.high-contrast header {
+  background-color: black !important;
+  color: yellow !important;
+}
+
+.high-contrast input,
+.high-contrast select,
+.high-contrast button {
+  background-color: #222 !important;
+  color: yellow !important;
+  border: 1px solid yellow !important;
+}
+
+.high-contrast .task {
+  background-color: #333 !important;
+  color: yellow !important;
+}
+
+.high-contrast .task button {
+  background-color: #555 !important;
+  color: yellow !important;
+}
