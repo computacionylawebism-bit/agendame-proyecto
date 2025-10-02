@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <title>AGENDAME</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Fuente llamativa de Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -18,17 +17,21 @@
       Escribe la tarea, elegí la categoría, la fecha y la hora.
     </p>
     <p class="credits">
-      Proyecto creado por: Cáceres Diego, García Evelyn, Pintos Cecilia y Zapata Andrea –
+      Proyecto creado por: Cáceres Diego, García Evelyn, Pintos Cecilia y Zapata Andrea – 
       Computación y la Web – 2° Profesorado de Informática
     </p>
   </header>
 
-  <section class="form-section">
-    <input type="password" id="parentPassword" placeholder="Clave de padres">
-    <button id="toggleModeBtn">MODO TUTOR</button>
+  <section class="form-section" id="setPasswordSection">
+    <input type="password" id="newPassword" placeholder="Crea la clave de tutor">
+    <button id="setPasswordBtn">Ingresar</button>
   </section>
 
-  <section class="form-section" id="taskForm">
+  <section class="form-section" id="loginSection" style="display:none;">
+    <input type="password" id="parentPassword" placeholder="Clave de padres">
+  </section>
+
+  <section class="form-section" id="taskForm" style="display:none;">
     <input type="text" id="taskInput" placeholder="Escribe una tarea simple...">
     <select id="categorySelect">
       <option value="medicamento">💊 Medicamentos</option>
@@ -39,14 +42,14 @@
     <button id="addTaskBtn">➕ Agregar tarea</button>
   </section>
 
-  <section class="form-section">
+  <section class="form-section" style="display:none;" id="calendarSection">
     <label for="calendarView">Ver día:</label>
     <input type="date" id="calendarView">
   </section>
 
   <div id="taskList" class="task-list"></div>
 
-  <section class="form-section">
+  <section class="form-section" style="display:none;" id="accessibilitySection">
     <button id="increaseFont">🔍 Aumentar letra</button>
     <button id="decreaseFont">🔎 Disminuir letra</button>
     <button id="toggleContrast">🌗 Alto contraste</button>

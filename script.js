@@ -8,38 +8,56 @@ const increaseFont = document.getElementById("increaseFont");
 const decreaseFont = document.getElementById("decreaseFont");
 const toggleContrast = document.getElementById("toggleContrast");
 
-const toggleModeBtn = document.getElementById("toggleModeBtn");
 const parentPassword = document.getElementById("parentPassword");
-let isParent = false;
+const newPassword = document.getElementById("newPassword");
+const setPasswordBtn = document.getElementById("setPasswordBtn");
+
+const setPasswordSection = document.getElementById("setPasswordSection");
+const loginSection = document.getElementById("loginSection");
+const taskForm = document.getElementById("taskForm");
+const calendarSection = document.getElementById("calendarSection");
+const accessibilitySection = document.getElementById("accessibilitySection");
 
 const calendarView = document.getElementById("calendarView");
 
 let fontSize = 16;
 let tasks = [];
+let sessionPassword = null;
 
-// Modo padre
-toggleModeBtn.addEventListener("click", () => {
-  if (!isParent) {
-    if (parentPassword.value === "1234") {
-      isParent = true;
-      toggleModeBtn.textContent = "Salir modo padre";
-      addTaskBtn.disabled = false;
-      document.querySelectorAll(".deleteBtn").forEach(b => b.disabled = false);
-    } else {
-      alert("Clave incorrecta");
-    }
-  } else {
-    isParent = false;
-    toggleModeBtn.textContent = "Entrar modo padre";
-    addTaskBtn.disabled = true;
-    document.querySelectorAll(".deleteBtn").forEach(b => b.disabled = true);
+// Definir la clave al ingresar
+setPasswordBtn.addEventListener("click", () => {
+  const newPass = newPassword.value.trim();
+  if (newPass === "") {
+    alert("Escribe una clave válida");
+    return;
   }
+  sessionPassword = newPass;
+  newPassword.value = "";
+  setPasswordSection.style.display = "none";
+  loginSection.style.display = "block";
+  taskForm.style.display = "block";
+  calendarSection.style.display = "block";
+  accessibilitySection.style.display = "block";
+  alert("Clave configurada. Ahora puedes usar la agenda.");
 });
 
-addTaskBtn.disabled = true;
+function checkPassword() {
+  const pass = parentPassword.value;
+  if (sessionPassword === null) {
+    alert("No hay clave configurada todavía");
+    return false;
+  }
+  if (pass === sessionPassword) {
+    return true;
+  } else {
+    alert("Clave incorrecta");
+    return false;
+  }
+}
 
-// Agregar tareas
 addTaskBtn.addEventListener("click", () => {
+  if (!checkPassword()) return;
+
   const text = taskInput.value.trim();
   const category = categorySelect.value;
   const endTime = taskTimeInput.value;
@@ -48,7 +66,6 @@ addTaskBtn.addEventListener("click", () => {
   if (endTime === "") return alert("Selecciona fecha y hora");
 
   tasks.push({ text, category, endTime });
-
   renderTasks();
   taskInput.value = "";
   taskTimeInput.value = "";
@@ -77,7 +94,7 @@ function renderTasks() {
       <small>Hora: ${finishDate.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</small>
       <button onclick="speakTask('${t.text} a las ${finishDate.toLocaleTimeString()}')">🔊 Leer</button>
       <button class="completeBtn" onclick="completeTask(this)">✔ Hecho</button>
-      <button class="deleteBtn" onclick="deleteTask(${index}, this)" ${!isParent ? "disabled":""}>❌ Borrar</button>
+      <button class="deleteBtn" onclick="deleteTask(${index}, this)">❌ Borrar</button>
     `;
 
     taskList.appendChild(taskDiv);
@@ -96,14 +113,12 @@ function renderTasks() {
 
 calendarView.addEventListener("change", renderTasks);
 
-// Lector de voz
 function speakTask(text) {
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = "es-ES";
   speechSynthesis.speak(utterance);
 }
 
-// Completar tarea con mensaje de felicitación
 function completeTask(btn) {
   btn.parentElement.style.textDecoration = "line-through";
   const utterance = new SpeechSynthesisUtterance("¡Felicitaciones, lo estás haciendo muy bien!");
@@ -111,14 +126,12 @@ function completeTask(btn) {
   speechSynthesis.speak(utterance);
 }
 
-// Eliminar tarea
 function deleteTask(index, btn) {
-  if (!isParent) return alert("Solo los padres pueden borrar");
+  if (!checkPassword()) return;
   tasks.splice(index,1);
   renderTasks();
 }
 
-// Accesibilidad: tamaño de letra
 increaseFont.addEventListener("click", () => {
   fontSize += 2;
   document.documentElement.style.fontSize = fontSize + "px";
@@ -129,7 +142,6 @@ decreaseFont.addEventListener("click", () => {
   document.documentElement.style.fontSize = fontSize + "px";
 });
 
-// Alto contraste
 toggleContrast.addEventListener("click", () => {
   document.body.classList.toggle("high-contrast");
 });

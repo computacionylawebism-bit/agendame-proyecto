@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
@@ -11,7 +11,7 @@ body {
 }
 
 header {
-  background-color: #a7c7e7;
+  background-color: #87bff7;
   padding: 15px;
   text-align: center;
   color: #000;
@@ -23,36 +23,21 @@ header {
   gap: 1rem;
   flex-wrap: wrap;
 }
-
 .header-logo {
-  height: 200px; /* logos más grandes */
+  height: 200px;
   width: auto;
 }
-
 h1 {
   margin: 0;
-  font-size: 80px; /* más grande */
-  font-family: 'Fredoka One', cursive; /* fuente llamativa */
+  font-size: 80px;
+  font-family: 'Fredoka One', cursive;
   flex: 1;
   text-align: center;
 }
-
-.instructions {
-  margin-top: 5px;
-  font-size: 14px;
-}
-
-.credits {
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-  color: #222;
-}
-
 .form-section {
   padding: 15px;
   text-align: center;
 }
-
 input, select, button {
   margin: 5px;
   padding: 10px;
@@ -67,14 +52,13 @@ button {
   padding: 20px;
 }
 
-/* Tareas */
 .task {
   margin: 10px auto;
   padding: 15px;
   border-radius: 10px;
   width: 250px;
   text-align: center;
-  background-color: #ffd6d6;
+  background-color: #f57f7f;
 }
 
 .task p {
@@ -97,7 +81,6 @@ button {
   border-radius: 8px;
 }
 
-/* Alto contraste */
 .high-contrast,
 .high-contrast body {
   background-color: black !important;
